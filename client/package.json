@@ -25,6 +25,7 @@
     ]
   },
   "prettier": {
+    "endOfLine": "auto",
     "printWidth": 90,
     "bracketSpacing": false,
     "trailingComma": "es5"
@@ -35,14 +36,8 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx)": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.+(json|css|md)": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.+(js|jsx)": "eslint --fix",
+    "*.+(json|css|md)": "prettier --write"
   },
   "browserslist": {
     "production": [
