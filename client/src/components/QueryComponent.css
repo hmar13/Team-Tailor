@@ -1,0 +1,10 @@
+.query__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.query__form {
+  display: flex;
+  flex-direction: column;
+}

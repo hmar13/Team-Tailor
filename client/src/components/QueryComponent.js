@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./QueryComponent.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {getJokeByQueryWord} from "../services/ApiService";
@@ -12,24 +13,36 @@ function QueryComponent() {
   };
 
   const handleJokesFetch = async () => {
-    const result = await getJokeByQueryWord(text);
-    console.log(result);
-    setJokes(result);
+    if (text) {
+      const result = await getJokeByQueryWord(text);
+      console.log(result);
+      result ? setJokes(result) : setJokes(null);
+    }
   };
+
   return (
-    <div>
-      <h2>Random Jokes by Word</h2>
-      <form noValidate autoComplete="on">
-        <TextField
-          id="outlined-basic"
-          label="Outlined"
-          variant="outlined"
-          onChange={handleChange}
-        />
+    <div className="query__container">
+      <h2>Random Jokes</h2>
+      <h3>by Word..</h3>
+      <form noValidate autoComplete="on" className="query__form">
+        <TextField label="by Word" variant="outlined" onChange={handleChange} />
         <Button color="primary" variant="contained" onClick={handleJokesFetch}>
           Submit
         </Button>
       </form>
+      <div>
+        <ul className="query__jokes">
+          {jokes ? (
+            jokes.result ? (
+              jokes.result.map((joke, index) => {
+                return <li key={index}>{joke.value}</li>;
+              })
+            ) : (
+              <p>Sorry thats not a valid word</p>
+            )
+          ) : null}
+        </ul>
+      </div>
     </div>
   );
 }

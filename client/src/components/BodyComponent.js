@@ -1,11 +1,8 @@
 import React, {useState, useEffect} from "react";
+import "./BodyComponent.css";
 import CategoriesComponent from "./CategoriesComponent";
 import QueryComponent from "./QueryComponent";
-import {
-  getCategories,
-  // getRandomByCategoryName,
-  // getJokeByQueryWord,
-} from "../services/ApiService";
+import {getCategories} from "../services/ApiService";
 
 function BodyComponent() {
   const [categories, setCategories] = useState();
@@ -19,7 +16,7 @@ function BodyComponent() {
   }, []);
 
   return (
-    <div>
+    <div className="body__container">
       <QueryComponent />
       <div>{categories ? <CategoriesComponent props={categories} /> : null}</div>
     </div>

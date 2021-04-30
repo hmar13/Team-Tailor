@@ -1,5 +1,13 @@
-.App {
+.app {
+  display: flex;
+  flex-direction: column;
 }
 
-.App__header {
+.app__header {
+  background-color: blue;
+}
+
+.app__header__title {
+  text-align: center;
+  color: white;
 }
