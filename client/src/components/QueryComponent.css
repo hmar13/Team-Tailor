@@ -1,10 +1,18 @@
 .query__container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.query_title {
+  align-self: center;
 }
 
 .query__form {
   display: flex;
   flex-direction: column;
+  align-self: center;
+}
+
+.query__jokes {
+  align-self: center;
 }

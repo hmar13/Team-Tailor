@@ -16,13 +16,14 @@
 .category__buttons {
   display: flex;
   flex-direction: column;
-  /* max-width: 100px; */
   position: absolute;
   left: 0;
   padding-left: 10px;
 }
 
 .category__joke {
-  padding-left: 160px;
+  padding-left: 150px;
   padding-right: 20px;
+  position: absolute;
+  left: 0;
 }

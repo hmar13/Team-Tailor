@@ -3,6 +3,8 @@ import "./QueryComponent.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {getJokeByQueryWord} from "../services/ApiService";
+const Filter = require("bad-words");
+const filter = new Filter();
 
 function QueryComponent() {
   const [text, setText] = useState();
@@ -20,27 +22,37 @@ function QueryComponent() {
     }
   };
 
+  const keyPress = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      handleJokesFetch();
+    }
+  };
+
   return (
     <div className="query__container">
-      <h2>Random Jokes</h2>
-      <h3>by Word..</h3>
+      <h2 className="query_title">Random Jokes</h2>
+      <h3 className="query_title">by Word..</h3>
       <form noValidate autoComplete="on" className="query__form">
-        <TextField label="by Word" variant="outlined" onChange={handleChange} />
-        <Button color="primary" variant="contained" onClick={handleJokesFetch}>
+        <TextField
+          label="by Word"
+          variant="outlined"
+          onChange={handleChange}
+          onKeyDown={keyPress}
+        />
+        <Button color="secondary" variant="contained" onClick={handleJokesFetch}>
           Submit
         </Button>
       </form>
       <div>
         <ul className="query__jokes">
-          {jokes ? (
-            jokes.result ? (
-              jokes.result.map((joke, index) => {
-                return <li key={index}>{joke.value}</li>;
-              })
-            ) : (
-              <p>Sorry thats not a valid word</p>
-            )
-          ) : null}
+          {jokes
+            ? jokes.result
+              ? jokes.result.map((joke, index) => {
+                  return <li key={index}>{filter.clean(joke.value)}</li>;
+                })
+              : null
+            : null}
         </ul>
       </div>
     </div>

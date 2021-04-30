@@ -3,6 +3,8 @@ import "./CategoriesComponent.css";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import {getRandomByCategoryName} from "../services/ApiService";
+const Filter = require("bad-words");
+const filter = new Filter();
 
 function CategoriesComponent(props) {
   const [categoryJoke, setCategoryJoke] = useState();
@@ -19,7 +21,7 @@ function CategoriesComponent(props) {
         <ButtonGroup
           className="category__buttons"
           orientation="vertical"
-          color="primary"
+          color="secondary"
           aria-label="vertical contained primary button group"
           variant="contained"
         >
@@ -34,7 +36,7 @@ function CategoriesComponent(props) {
             : null}
         </ButtonGroup>
         <div className="category__joke">
-          {categoryJoke ? <li>{categoryJoke.value}</li> : null}
+          {categoryJoke ? <li>{filter.clean(categoryJoke.value)}</li> : null}
         </div>
       </div>
     </div>
