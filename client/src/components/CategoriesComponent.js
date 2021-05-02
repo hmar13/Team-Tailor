@@ -13,7 +13,7 @@ function CategoriesComponent(props) {
     const result = await getRandomByCategoryName(chosenCategory);
     result ? setCategoryJoke(result) : setCategoryJoke(null);
   };
-  console.log(categoryJoke);
+
   return (
     <div className="category__container">
       <h3 className="category__title">by Category..</h3>
