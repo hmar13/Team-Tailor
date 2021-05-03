@@ -7,4 +7,5 @@
 ## Setup:
 ### 1. Clone or fork the repo
 ### 2. npm install
-### 3. npm run
+### 3. npm test
+### 4. npm run
