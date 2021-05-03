@@ -19,6 +19,7 @@ function CategoriesComponent(props) {
       <h3 className="category__title">by Category..</h3>
       <div className="category__body">
         <ButtonGroup
+          data-testid="buttonGroup"
           className="category__buttons"
           orientation="vertical"
           color="secondary"
